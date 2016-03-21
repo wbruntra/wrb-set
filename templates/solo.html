@@ -1,0 +1,122 @@
+{% extends 'layout.html' %}
+
+{% block title %}| Solo
+{% endblock %}
+
+{% block stylesheets %}
+  <link href='/css/solo.css' rel='stylesheet'>
+{% endblock %}
+
+{% block content %}
+
+{% include 'top-nav.html' %}
+
+  <div class="container game-holder">
+    <div id="pregame">
+      <div id="pregame-content">
+        <div class="row">
+          <h3>Welcome to the amazing four-dimensional matching game!</h3>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <p>Choose a difficulty level</p>
+          </div>
+          <div class="col-xs-7 col-centered">
+            <div class="col-xs-2">Easy
+            </div>
+            <div class="col-xs-8">
+              <div class="col-xs-2 difficulty-box">
+                <input type="radio" name="difficulty" value="4"> </div>
+              <div class="col-xs-2 difficulty-box active" data-level="8">
+                <input type="radio" name="difficulty" value="8" checked></div>
+              <div class="col-xs-2 difficulty-box" data-level="14"><input type="radio" name="difficulty" value="14"></div>
+              <div class="col-xs-2 difficulty-box" data-level="22">
+                <input type="radio" name="difficulty" value="22"></div>
+              <div class="col-xs-2 difficulty-box">
+                <input type="radio" name="difficulty" value="30"></div>
+              <div class="col-xs-2 difficulty-box">
+                <input type="radio" name="difficulty" value="42"></div>
+              <input id="difficulty" type="hidden" value="8">
+            </div>
+            <div class="col-xs-2">Hard</div>
+            <!-- <div class="col-xs-3">
+                      <input id="super-difficult" type="checkbox">
+                      Super Hard
+                  </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <p>First to get 5 points is the winner!</p>
+        </div>
+        <div class="row">
+          <button id="start-button" onclick="">Start the Game</button>
+        </div>
+        <div class="row" id="pregame-bottom">
+          <p>scoring: you get one point for every set, lose half a point for a false call</p>
+          <p>
+            <strong>keyboard tips</strong>
+          </p>
+          <p>hit 's' to call out your set, 'g' to lock in your choice<br>'r' reshuffles the deck</p>
+        </div>
+        <div class="row">
+          <p>
+            <a class="button" href="/rules">How to Play</a>
+            <a class="button" href="/scores">See High Scores</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  <div class="col-xs-12" id="colOne">
+    <div class="section" id="topbar">
+      <div class="col-xs-4 col-sm-3">
+        <p id="timer"></p>
+      </div>
+      <div class="col-xs-4 col-sm-3">
+        <p id="score-info"></p>
+      </div>
+      <div class="col-xs-4 col-sm-3">
+        <p id="countdown">-</p>
+      </div>
+      <div class="col-xs-4 col-sm-3">
+        <h1 id="alert-message"></h1>
+      </div>
+    </div>
+    <div class="section" id="middle">
+      <div class="col-xs-12" id="board"></div>
+      <div id="controls">
+        <button id="submit" type="button" onclick="">Go!</button>
+        <button id="declare-set" type="button" onclick="">SET!</button>
+      </div>
+    </div>
+    <div class="col-xs-12 section">
+      <div class="col-xs-12" id="game-info">
+        <div class="col-xs-6 col-sm-8" id="all-scores">
+
+          <p class="col-xs-12 col-sm-6" id="your-score"></p>
+          <p class="col-xs-12 col-sm-6" id="opponent-score"></p>
+        </div>
+        <div class="col-xs-6 col-sm-4" id="board-info">
+          <p id="remaining"></p>
+          <p id="sets-on-board"></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 section" id="button-holder">
+      <div class="col-xs-6 col-md-2 col-md-offset-8">
+        <button class="btn btn-lg" type="button" id="reshuffle" onclick="">Reshuffle</button>
+      </div>
+      <div class="col-xs-6 col-md-2">
+        <button class="btn btn-lg" type="button" id="replay" onclick="">Restart!</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>var lowScore = {{ lowest_score }}</script>
+<script src="/js/game.js"></script>
+<script src="/js/solo.js"></script>
+{% endblock %}

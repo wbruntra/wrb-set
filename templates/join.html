@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% include 'top-nav.html' %}
+
+      <div id="pregame">
+        <div id="pregame-content">
+          <div id="join-page">
+        <p>Welcome to the amazing four-dimensional matching game!</p>
+        <p>You will join a game!</p>
+        <form action="/join" method="post">
+          <div class="form-group">
+          Your Name: <input type="text" name="nickname"><br>
+        </div>
+          Game Code: <input type="text" name="game-key" value="{{ game_key }}"><br><span class="error">{{ error }}</span><br>
+          <input type="submit" value="Join">
+        </form>
+          <p>scoring: you get one point for every set, lose half a point for a false call</p>
+          <p><strong>keyboard tips</strong></p>
+          <p>hit 's' to call out your set</p>
+        </div>
+        </div>
+    </div>
+{% endblock %}

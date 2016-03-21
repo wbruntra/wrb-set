@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Set Game</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/min-sprites.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  </head>
+  <body>
+    <div id="pregame">
+      <div id="pregame-content">
+      <ul>
+      <p>Welcome to the amazing four-dimensional matching game!</p>
+      <p>Here are the active games right now:</p>
+        {% for host in hosts %}
+<li>
+		{{host.host_nick}}:  <b><a href="/join?g={{host.game_code}}">Join</a>!</b> 
+</li>
+{% endfor %}
+      <p>You can also host <a href="/multi">your own game</a> !</p>
+      </div>
+  </div>
+  </body>
+</html>

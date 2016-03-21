@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% include 'top-nav.html' %}
+<div class="container">
+<div id="pregame" class="col-xs-8">
+<p> Hello there!</p>
+<p> Your username is {{ user.username }}</p>
+{% if user.stats.get('record') %}
+<p> Your times are {{ user.stats.times|join(' ') }}</p>
+<p> So your median time is {{ user.stats.median }}
+{% else %}
+<p> You haven't played any games! Get crackin'!</p>
+{% endif %}
+<p> That's all I know right now</p>
+</div>
+{% endblock %}
+</div>

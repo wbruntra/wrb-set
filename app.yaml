@@ -1,0 +1,41 @@
+application: wrb-set-multi
+version: 2
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+inbound_services:
+- channel_presence
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /bootstrap
+  static_dir: bootstrap
+
+- url: /robots.txt
+  static_files: robots.txt
+  upload: robots.txt
+
+- url: /(.*\.(png))
+  static_files: \1
+  upload: (.*\.(png))
+  expiration: "2d"
+
+- url: /(.*\.(gif|jpg|js|css))
+  static_files: \1
+  upload: (.*\.(gif|jpg|js|css))
+
+- url: /_ah/channel/.*
+  script: connection_handler.app
+
+- url: .*
+  script: main.app
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+- name: jinja2
+  version: latest

@@ -1,0 +1,404 @@
+/* pregame stuff */
+
+
+/* going nuclear on these stupid highlighted divs
+*/
+
+*, *:before, *:after {
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+}
+
+#pregame, .pregame {
+  background:#fff;
+  text-align:center;
+  border: 2px solid black;
+}
+
+#pregame-content {
+  padding:20px;
+  font-size:1.2em;
+}
+
+#pregame-content li {
+  list-style:none;
+}
+
+#pregame-content .row {
+  margin-bottom:20px;
+}
+
+.col-centered{
+    float: none;
+    margin:0 auto;
+}
+
+#pregame button, #pregame a.button {
+  padding: 7px 10px ;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 100px;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+#pregame a.button {
+  text-decoration: none;
+  background-color: #a93232;
+  border: none;
+  margin-right:15px;
+}
+
+#colOne, #countdown, #overlay, #submit {
+  display:none;
+}
+
+/* end pregame */
+
+body {
+  background-color:#588c7e;
+  font-family:Lato;
+  /*font-size:1.6em;*/
+}
+
+.container .section, .container-fluid .section {
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+/* things that pop up */
+
+#overlay, #name-prompt {
+  opacity:.7;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,.2);
+  color: #000;
+  position: absolute;
+  top:0;
+  left:0;
+  margin:0;
+}
+
+#alert-message {
+  display: none;
+  font-size:2em;
+  margin:0;
+  background-color:white;
+  color:#1a1d04;
+  text-align:center;
+}
+
+#overlay h1 {
+  width:350px;
+  font-size:3.5em;
+  margin:150px;
+  color:#1a1d04;
+  text-align:center;
+  background-color:white;
+}
+
+#name-prompt {
+  font-size:1.2em;
+  opacity:.99;
+}
+
+#name-prompt div {
+  position:absolute;
+  top:30%;
+  left:20%;
+  background-color: #245246;
+  border-radius: 10px;
+  padding: 20px;
+  color: rgb(39, 8, 4);
+  border-style: solid;
+  text-align:center;
+}
+
+#name-prompt p {
+  text-align:center;
+}
+
+#name-prompt button {
+  padding: 7px 10px ;
+  background-color: #4bc970;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 5px;
+  width: 85px;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  margin: 0 5px;
+}
+
+#overlay img {
+  margin-top:  10%;
+  padding: 5px;
+}
+
+/* all the stuff in the body */
+
+
+/* all the stuff in column one */
+
+#timerDiv {
+}
+
+#topbar div p {
+  border:2px solid black;
+  border-radius:5px;
+  background-color:bisque;
+  padding:10px;
+  text-align:center;
+}
+
+#countdown {
+}
+
+#countdown.running, #declaration.running {
+  display:block;
+}
+
+#board {
+  overflow:auto;
+  background-color:#a93232;
+  border:5px solid black;
+  border-radius:8px;
+}
+
+#board.active {
+  border-color:#193dff;
+  background-color:rgba(212, 6, 6, 0.96);
+}
+
+.cell {
+  margin:10px 0;
+  /*border-radius:5px;
+  border: 4px solid #3b1414;*/
+}
+
+button, div#timer, #score-info {
+}
+
+#board.highlighted .cell img {
+  -moz-filter: grayscale(1) blur(9px);
+  -o-filter: grayscale(1) blur(9px);
+  -ms-filter: grayscale(1) blur(9px);
+  filter: grayscale(1) blur(9px);
+  -webkit-filter: grayscale(1) blur(9px);
+}
+
+#board.highlighted .cell.on img {
+  -webkit-filter: blur(0);
+  -moz-filter: blur(0);
+  -o-filter: blur(0);
+  -ms-filter: blur(0);
+  filter: blur(0);
+}
+
+#bottom-row div {
+  margin-left:5px;
+  float:left;
+}
+
+#game-info {
+  background-color:bisque;
+  border: 2px solid #222f2c;
+  border-radius:8px;
+}
+
+#all-scores {
+}
+
+#all-scores p {
+  padding:5px;
+}
+
+#game-info p {
+  padding:5px 0;
+}
+
+#button-holder {
+  overflow:auto;
+}
+
+#button-holder button {
+  color: #FFF;
+  background-color: #4bc970;
+  border-radius:5px;
+  border: 2px solid #3ac162;
+}
+/* end column one
+
+/* to make stretchyness work */
+
+.stretchy {
+  display:block;
+  float:left;
+  position:relative;
+  overflow:hidden;
+  max-width:120px;
+}
+
+.stretchy .spacer {
+  width: 100%;
+  height: auto;
+}
+
+.stretchy.no-limit {
+  max-width: none;
+} /*you could also set this to a pixel size, for example 320px, to limit the maximum*/
+
+.stretchy.no-limit .sprite {
+  min-height: 100%;
+}
+
+#middle a {
+  pointer-events:none;
+}
+
+.box {
+  border:4px solid black;
+  border-radius:5px;
+  background:#fff;
+  padding:2%;
+}
+
+.on .box {
+  border-color:#ee0;
+  /*background-color:#ee0;*/
+}
+
+a img {
+  border:0;
+  padding: 0;
+  margin: 0 ;
+  display: block;
+}
+
+a.on {
+  background-color:green;
+}
+
+.stretchy {
+  width:100%;
+}
+
+.stretchy .sprite {
+position:absolute;
+top:0;
+left:0;
+max-width:none;
+max-height:100%;
+}
+
+.one.empty {
+  left:0%;
+}
+
+.one.striped {
+  left:-100%
+}
+
+.one.solid {
+  left: -200%
+}
+
+.two.empty {
+  left:-300%
+}
+.two.striped {
+  left:-400%
+}
+.two.solid {
+  left:-500%
+}
+
+.three.empty {
+  left:-600%;
+}
+
+.three.striped {
+  left:-700%;
+}
+.three.solid {
+  left:-800%;
+}
+
+
+/* end stretchy */
+
+/*
+/*
+
+/*end chat*/
+
+/* RESPONSIVE DESIGN */
+
+/* Medium Devices, Desktops */
+/*@media only screen and (min-width : 992px) {
+  .container {
+    max-width:750px;
+  }
+}*/
+
+/*==========  Non-Mobile First Method  ==========*/
+
+.container {
+  max-width: 940px;
+}
+
+.game-holder {
+  max-width: 940px;
+}
+
+.error {
+  color:#cb1812;
+}
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+  #alert-message {
+    font-size:1.6em;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+  .cell, #board div, #middle div {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  .container {
+    font-size:.9em;
+  }
+
+  #alert-message {
+    font-size:1.2em;
+  }
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {
+
+}
+
+
+/* Colors

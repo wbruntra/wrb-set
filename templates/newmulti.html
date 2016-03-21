@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block title %} | Multiplayer {% endblock %}
+
+{% block stylesheets %}
+  <link href='/css/solo.css' rel='stylesheet'>
+  <link href='/css/multi.css' rel='stylesheet'>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+  <div class="col-xs-12 col-md-9" id="pregame">
+    <div id="pregame-content">
+      <div class="row">
+      <h3>Welcome to the amazing four-dimensional matching game, {{ player }}! (<a href="/host">change</a>)</h3>
+    </div>
+      <div class="row">
+    <p>Send your friends <a href="/join?g={{ game_key }}">this</a> link!</p>
+    <p>(http://wrb-set-multi.appspot.com/join?g={{ game_key }})</p>
+  </div>
+    <div class="row">
+      <p>Or give them this code: {{ game_key }} </p>
+    </div>
+<div class="row">
+    <button id="start-button" onclick="">Start the Game</button>
+<!--        <button id="add-computer" onclick="">Add Computer</button>-->
+</div>
+    <div class="row" id="pregame-bottom">
+      <p><strong>keyboard tips</strong></p>
+      <p>hit 's' to call out your set,'r' reshuffles the deck</p>
+  {% include 'pregame-players.html' %}
+    </div>
+    </div>
+
+  </div>
+
+{% include 'common-multi.html' %}
+
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/_ah/channel/jsapi"></script>
+<script>
+    soloMatch = false;
+    myName = "{{ player }}";
+    game_key = "{{ game_key }}";
+    token = "{{ token }}";
+    isHost = ("{{ host }}"=="yes");
+</script>
+<script src="/js/game.js"></script>
+<script src="/js/true-combined.js"></script>
+<script src="/js/host-messages.js"></script>
+<script src="/js/channel.js"></script>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% include 'top-nav.html' %}
+
+<div class="container pregame">
+  <h2>Log in to your account</h2>
+  <form role="form" class="form" action="/login" method="post">
+    <div class="form-group">
+      <input type="text" name="username" value="" placeholder="Username">
+    </div>
+    <div class="form-group">
+      <input type="password" name="password" value="" placeholder="Password">
+    </div>
+    <input class="btn" type="submit" value="Log in">
+  </form>
+  <p class="error"> {{ error }}</p>
+</div>
+{% endblock %}

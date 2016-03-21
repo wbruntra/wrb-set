@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block stylesheets %}
+  <link href="/css/index.css" rel="stylesheet" type="text/css">
+
+{% endblock %}
+
+{% block content %}
+
+{% include 'top-nav.html' %}
+
+  <div class="container pregame" id="pregame">
+    <div class="col-xs-12 pregame-content">
+      <p>Welcome to the amazing four-dimensional matching game!</p>
+      <p>Now with amazing multi-player!</p>
+      <p>
+        <a href="/solo">Play</a>
+        single-player match!</p>
+      <p>
+        <a href="/multi">Play</a>
+        multi-player!</p>
+      <p>
+        <a href="/active">Join</a>
+        an existing game!</p>
+      <p>
+        <a class="btn btn-lg btn-danger" href="/rules">How to Play</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}

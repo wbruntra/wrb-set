@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{% include 'top-nav.html' %}
+
+<div class="container">
+  <div id="pregame">
+    <div id="pregame-content">
+      <div class="row">
+        <h3>Welcome to the amazing four-dimensional matching game!</h3>
+      </div>
+      <div class="row">
+      <div class="col-xs-12">
+        <p>Give me your name and hit Create when you are ready to start!</p>
+      </div>
+      <div class="col-xs-12">
+        <form action="/multi" method="post">
+          Name: <input type="text" name="nickname"><br>
+          <input class="btn" type="submit" value="Create">
+        </form>
+      </div>
+      </div>
+      <div class="row" id="pregame-bottom">
+        <p>scoring: you get one point for every set, lose half a point for a false call</p>
+        <p>
+          <strong>keyboard tips</strong>
+        </p>
+        <p>hit 's' to call out your set, 'g' to lock in your choice<br>'r' reshuffles the deck</p>
+      </div>
+      <div class="row">
+        <p>
+          <a class="button" href="/rules">How to Play</a>
+          <a class="button" href="/scores">See High Scores</a>
+        </p>
+      </div>
+    </div>
+
+      </div>
+    </div>
+ {% endblock %}
