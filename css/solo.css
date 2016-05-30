@@ -57,6 +57,14 @@
   margin-right:15px;
 }
 
+#pregame input[type=text] {
+  margin-bottom: 10px;
+}
+
+#pregame label {
+  margin-right: 8px;
+}
+
 #colOne, #countdown, #overlay, #submit {
   display:none;
 }
