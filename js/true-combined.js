@@ -661,7 +661,7 @@ function moveOn() {
 
 function confirmSetPresenceOrEnd() {
   while (countSets(board) == 0) {
-    if (board.concat(deck).length >= 21 || deckContainsSet(board.concat(deck))) {
+    if (maxScore(scores)[1] < 7 && (board.concat(deck).length >= 21 || deckContainsSet(board.concat(deck)))) {
       console.log('There is still a set! Retrying...');
       populateBoard();
     } else {
