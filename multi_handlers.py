@@ -10,6 +10,7 @@ import time
 import datetime
 
 class HostHandler(Handler):
+    #create new game and set user as host
     def get(self):
         game_key = str(random.randint(1001,9999))
         self.response.set_cookie('game_key',game_key)
@@ -22,7 +23,9 @@ class HostHandler(Handler):
         self.response.set_cookie('nickname',nickname)
         self.redirect('/multi')
 
+
 class ActiveHandler(Handler):
+  ## show currently active games for joining
   def get(self):
     hosts_query = db.Query(OnlineHost)
     hosts = hosts_query.fetch(100)
@@ -32,7 +35,7 @@ class ActiveHandler(Handler):
         active_hosts.append(host)
     self.render('active.html',hosts=active_hosts)
 
-class OldMultiHandler(Handler):
+class MultiHandler(Handler):
     def get(self):
         game_key = self.request.cookies.get('game_key')
         nickname = self.request.cookies.get('nickname')
@@ -60,34 +63,6 @@ class OldMultiHandler(Handler):
         self.response.set_cookie('nickname',nickname)
         self.redirect('/multi')
 
-class MultiHandler(Handler):
-    def get(self):
-        game_key = self.request.cookies.get('game_key')
-        nickname = self.request.cookies.get('nickname')
-        if (not game_key or not nickname):
-          self.redirect('/host')
-        else:
-          player_id = str(uuid.uuid4()).replace('-','')
-          token = channel.create_channel(player_id)
-          game = Game(key_name = game_key,
-                      host_token = token,
-                      num_players = 1)
-          game.player_nicks.append(nickname)
-          game.put()
-          host = OnlineHost(key_name = player_id,
-                            host_nick=nickname,
-                            game_code = game_key)
-          host.put()
-          template_vars = {'player':nickname,
-                          'game_key':game_key,
-                          'token':token,
-                          'host':'yes'}
-          self.render('newmulti.html',**template_vars)
-    def post(self):
-        nickname = self.request.get('nickname')
-        self.response.set_cookie('nickname',nickname)
-        self.redirect('/multi')
-
 class ClientHandler(Handler):
     def get(self):
         player = self.request.cookies.get('nickname')
@@ -104,7 +79,7 @@ class ClientHandler(Handler):
                         'game_key':game_key,
                         'player':player,
                         'host':'no'}
-        self.render('newclient.html',**template_vars)
+        self.render('client.html',**template_vars)
 
 
 class MoveHandler(Handler):
@@ -127,6 +102,7 @@ class MoveHandler(Handler):
 
 
 class JoinHandler(Handler):
+    #handle requests to join an existing game
     def get(self):
         game_key = self.request.get('g')
         self.response.set_cookie('game_key',game_key)

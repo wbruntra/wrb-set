@@ -494,7 +494,7 @@ function declarePress() {
 
 var $timer = $('#timer');
 var seconds = 0;
-$timer.text('Time: 0:00');
+$timer.text('0:00');
 
 
 function countup() {
@@ -506,7 +506,7 @@ function countup() {
     } else {
       rest = seconds % 60;
     };
-    $timer.text('Time: '+mins+":"+rest);
+    $timer.text(mins+":"+rest);
   }
 }
 

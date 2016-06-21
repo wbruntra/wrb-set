@@ -4,11 +4,12 @@
 /* going nuclear on these stupid highlighted divs
 */
 
-*, *:before, *:after {
-    -webkit-user-select: none; /* Chrome/Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+ */
-}
+
+/**, *:before, *:after {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}*/
 
 #pregame, .pregame {
   background:#fff;

@@ -12,20 +12,6 @@ class SoloHandler(Handler):
         except:
           lowest_score = 0
         player = self.request.cookies.get('player','Anonymous')
-        self.render('main.html',player=player,lowest_score=lowest_score)
-
-class NewSoloHandler(Handler):
-    def get(self):
-
-        guestbook_name = self.request.get('guestbook_name',DEFAULT_GUESTBOOK_NAME)
-        scores_query = Score.query(
-        ancestor=guestbook_key(guestbook_name)).order(-Score.score)
-        scores = scores_query.fetch(10)
-        try:
-          lowest_score = scores[-1].score
-        except:
-          lowest_score = 0
-        player = self.request.cookies.get('player','Anonymous')
         self.render('solo.html',player=player,lowest_score=lowest_score)
 
 class ScoreHandler(Handler):
