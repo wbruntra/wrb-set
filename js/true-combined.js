@@ -641,6 +641,7 @@ function moveOn() {
       $(".cell").removeClass('on');
       $overlay.html('');
       $overlay.hide();
+      checkForWinner();
       confirmSetPresenceOrEnd();
       gamePaused = false;
       declared = false;
@@ -659,9 +660,16 @@ function moveOn() {
   }
 }
 
+function checkForWinner() {
+  if (maxScore(scores)[1] > 8) {
+    gameOver();
+    return 0;
+  }
+}
+
 function confirmSetPresenceOrEnd() {
   while (countSets(board) == 0) {
-    if (maxScore(scores)[1] < 7 && (board.concat(deck).length >= 21 || deckContainsSet(board.concat(deck)))) {
+    if   (board.concat(deck).length >= 21 || deckContainsSet(board.concat(deck))) {
       console.log('There is still a set! Retrying...');
       populateBoard();
     } else {
@@ -799,6 +807,7 @@ if (isHost) {
 }
 enableKeys();
 
+//special board for easy testing
 function loadBoard() {
   board = ["2201", "0210", "2121", "0000", "0021", "0222", "1112", "2021", "2112", "1210", "2020", "1102"];
   return board

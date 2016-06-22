@@ -36,6 +36,7 @@ class ActiveHandler(Handler):
     self.render('active.html',hosts=active_hosts)
 
 class MultiHandler(Handler):
+    ## represents host in active multiplayer game
     def get(self):
         game_key = self.request.cookies.get('game_key')
         nickname = self.request.cookies.get('nickname')

@@ -57,7 +57,6 @@ var gameover = false;
 gameHistory = []
 
 function fill_td(td, cardName) {
-  //console.log(td +" ,"+ cardName);
   var numReference = ["one","two","three"];
   var fillReference = ["empty","striped","solid"]
   var colorReference = ["red", "green", "purple"];
@@ -124,7 +123,6 @@ function populateBoard() {
   for (var i = 0;i<rows.length;i++) {
     for (var j=0;j<columns.length;j++) {
       var cellName = '#'+columns[j]+rows[i];
-      //$cell = $('#'+columns[j]+rows[i]);
       newCard = deck.pop();
       board.push(newCard);
       fill_td(cellName,newCard);
@@ -252,8 +250,6 @@ $("#board").on(myDown, function(event) {
     declarePress();
   }
 });
-
-
 
 // Will auto-submit when activated
 
